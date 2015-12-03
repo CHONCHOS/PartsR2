@@ -1,0 +1,56 @@
+﻿@model PartsR2.Models.File
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>File</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ResearchReqFile)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ResearchReqFile)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateResearchAssigned)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateResearchAssigned)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PriorityLevel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PriorityLevel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StatusLevel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StatusLevel)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,50 @@
+﻿@model PartsR2.Models.File
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>File</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ResearchReqFile)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ResearchReqFile)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateResearchAssigned)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateResearchAssigned)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PriorityLevel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PriorityLevel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StatusLevel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StatusLevel)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.FileID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

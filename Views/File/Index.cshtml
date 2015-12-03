@@ -1,0 +1,117 @@
+﻿@model PartsR2.ViewModels.FileIndexData
+
+@{
+    ViewBag.Title = "Files";
+}
+
+<h2>Files</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+       <th>Research Requested File</th>
+        <th>Date Research Assigned</th>
+        <th>Priority Level</th>
+        <th>Status Level</th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model.Files)
+
+{
+    string selectedRow = "";
+    if (item.FileID == ViewBag.FileID)
+    {
+        selectedRow = "success";
+    }
+    <tr class="@selectedRow">
+        <td>
+            @Html.DisplayFor(modelItem => item.ResearchReqFile)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateResearchAssigned)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PriorityLevel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StatusLevel)
+        </td>
+        <td>
+            @Html.ActionLink("Select", "Index", new { id = item.FileID }) |
+            @Html.ActionLink("Edit", "Edit", new { id=item.FileID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.FileID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.FileID })
+        </td>
+          </tr>
+}
+
+</table>
+
+@if (Model.Quotes != null)
+{
+    <h3>Quotes for Selected File</h3>
+    <table class="table">
+        <tr>
+            <th></th>
+            <th>Quote ID</th>
+            <th>Vendor Name</th>
+            <th>Contact Date</th>
+        </tr>
+
+        @foreach (var item in Model.Quotes)
+        {
+            string selectedRow = "";
+            if (item.QuoteID == ViewBag.QuoteID)
+            {
+                selectedRow = "success";
+            }
+            <tr class="@selectedRow">
+                <td>
+                    @Html.ActionLink("Select", "Index", new { quoteID = item.QuoteID})
+                </td>
+                <td>
+                    @item.QuoteID
+                </td>
+                <td>
+                    @item.VendorName
+                </td>
+                <td>
+                    @item.ContactDate
+                </td>
+            </tr>
+        }
+    </table>
+}
+
+@if (Model.Parts != null)
+{
+    <h3>
+        Parts for Selected Quote
+    </h3>
+    <table class="table">
+        <tr>
+            <th>Part Number</th>
+            <th>Description</th>
+            <th>Issued PO</th>
+        </tr>
+
+        @foreach (var item in Model.Parts)
+        {
+            <tr>
+                <td>
+                    @item.PartNumber
+                </td>
+                <td>
+                    @item.Desc
+                </td>
+                <td>
+                    @item.IssuePO
+                </td>
+            </tr>
+        }
+
+    </table>
+}

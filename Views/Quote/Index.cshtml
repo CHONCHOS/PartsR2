@@ -1,0 +1,81 @@
+﻿@model IEnumerable<PartsR2.Models.Quote>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.File.ResearchReqFile)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VendorName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ContactDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ListingService)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ContactMethod)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ContactName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ContactEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ContactPhone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ContactFax)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.File.ResearchReqFile)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VendorName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ContactDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ListingService)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ContactMethod)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ContactName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ContactEmail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ContactPhone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ContactFax)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.QuoteID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.QuoteID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.QuoteID })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,105 @@
+﻿@model IEnumerable<PartsR2.Models.Part>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Quote.VendorName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PartNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Desc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CondAvail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QtyAvail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Exchange)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CorePrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OutrightPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Certs)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Remarks)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.JJRemarks)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IssuePO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PONumber)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Quote.VendorName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PartNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Desc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CondAvail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QtyAvail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Exchange)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CorePrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OutrightPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Certs)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Remarks)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.JJRemarks)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IssuePO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PONumber)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.PartID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.PartID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.PartID })
+        </td>
+    </tr>
+}
+
+</table>

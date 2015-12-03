@@ -1,0 +1,217 @@
+﻿<!-- Here is where we're at. So, I've got the details page pulling in the data the same way that File/Index pulls the data in. 
+    So it's able to query and view the data. 
+    The only problem at this point is that I don't want to "select" each data point. I want it all to be displayed on one page, 
+    or maybe each quote being "paginated". Meaning, User selects "File 1" and Quote 1 with Part 1, 2, and 3 are displayed, then next page shows 
+    Quote 2 with Part 1 and 2, so on and so forth. 
+    What needs to be done NOW is figuring out how to just drop all information on the page 
+    as soon as "details" is selected from File/Index. Then work out the pagination from there. Baby Steps.   -->
+
+
+@model PartsR2.ViewModels.DetailIndexData
+
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<table class="table">
+    <tr>
+        <th>Research Requested File</th>
+        <th>Date Research Assigned</th>
+        <th>Priority Level</th>
+        <th>Status Level</th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.Files)
+
+    {
+        string selectedRow = "";
+        if (item.FileID == ViewBag.FileID)
+        {
+            selectedRow = "success";
+        }
+        <tr class="@selectedRow">
+            <td>
+                @Html.DisplayFor(modelItem => item.ResearchReqFile)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateResearchAssigned)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PriorityLevel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StatusLevel)
+            </td>
+            <td>
+                @Html.ActionLink("Selectthis", "Details", new { id = item.FileID }) |
+            
+            </td>
+        </tr>
+    }
+
+</table>
+
+@if (Model.Quotes != null)
+{
+    <h3>Quotes for Selected File</h3>
+    <table class="table">
+        <tr>
+            <th></th>
+            <th>Quote ID</th>
+            <th>Vendor Name</th>
+            <th>Contact Date</th>
+            <th>Listing Service</th>
+            <th>Contact Method</th>
+            <th>Contact Name</th>
+            <th>Contact Email</th>
+            <th>Contact Phone</th>
+            <th>Contact Fax</th>
+            
+        </tr>
+
+        @foreach (var item in Model.Quotes)
+        {
+            string selectedRow = "";
+            if (item.QuoteID == ViewBag.QuoteID)
+            {
+                selectedRow = "success";
+            }
+            <tr class="@selectedRow">
+                <td>
+                    @Html.ActionLink("Select", "Details", new { quoteID = item.QuoteID })
+                </td>
+                <td>
+                    @item.QuoteID
+                </td>
+                <td>
+                    @item.VendorName
+                </td>
+                <td>
+                    @item.ContactDate
+                </td>
+                <td>
+                    @item.ListingService
+                </td>
+                <td>
+                    @item.ContactMethod
+                </td>
+                <td>
+                    @item.ContactName
+                </td>
+                <td>
+                    @item.ContactEmail
+                </td>
+                <td>
+                    @item.ContactPhone
+                </td>
+                <td>
+                    @item.ContactFax
+                </td>
+                
+
+            </tr>
+        }
+    </table>
+}
+
+@if (Model.Parts != null)
+{
+    <h3>
+        Parts for Selected Quote
+    </h3>
+    <table class="table table-bordered">
+        <tr>
+            <th>Part Number</th>
+            <th>Description</th>
+            <th>Cond Avail</th>
+            <th>Qty Avail</th>
+            <th>Exchange Price</th>
+            <th>Core Price</th>
+            <th>Outright Price</th>
+            <th>Certs</th>           
+            <th>Issue PO?</th>
+            <th>PO Number</th>
+          
+        </tr>
+
+        @foreach (var item in Model.Parts)
+        {
+            <tr>
+                <td>
+                    @item.PartNumber
+                </td>
+                <td>
+                    @item.Desc
+                </td>
+                <td>
+                    @item.CondAvail
+                </td>
+                <td>
+                    @item.QtyAvail
+                </td>
+                <td>
+                    @item.Exchange
+                </td>
+                <td>
+                    @item.CorePrice
+                </td>
+                <td>
+                    @item.OutrightPrice
+                </td>
+                <td>
+                    @item.Certs
+                </td>
+                                         
+                    <td>
+                        @item.IssuePO
+                    </td>
+                    <td>
+                        @item.PONumber
+                    </td>
+                </tr>
+        }
+
+    </table>
+}
+
+@if (Model.Parts != null)
+{
+    <h3>
+        Remarks
+    </h3>
+
+    <table class="table table-bordered">
+
+        <tr>
+            <th>Part Number</th>
+            <th>Remarks</th>
+            <th>JJ Remarks</th>
+            
+            
+        </tr>
+
+        @foreach (var item in Model.Parts)
+        {
+            <tr>
+                <td>
+                    @item.PartNumber
+                </td>
+                <td>
+                    @item.Remarks
+                </td>
+                <td>
+                    @item.JJRemarks
+                </td>
+            </tr>
+        }
+
+    </table>
+
+}
+
+@Html.ActionLink("Back to List", "Index")
+</p>

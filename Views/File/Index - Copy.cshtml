@@ -1,0 +1,51 @@
+﻿@model IEnumerable<PartsR2.Models.File>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ResearchReqFile)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateResearchAssigned)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PriorityLevel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StatusLevel)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ResearchReqFile)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateResearchAssigned)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PriorityLevel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StatusLevel)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.FileID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.FileID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.FileID })
+        </td>
+    </tr>
+}
+
+</table>
